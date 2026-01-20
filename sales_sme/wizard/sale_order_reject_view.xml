@@ -1,0 +1,17 @@
+<odoo>
+    <record id="sale_reject_reason_wizard_form" model="ir.ui.view">
+        <field name="name">reject.reason.wizard.form</field>
+        <field name="model">sale.order.reject</field>
+        <field name="arch" type="xml">
+            <form string="Reject Reason">
+                <group>
+                    <field name="reject_reason"/>
+                </group>
+                <footer>
+                    <button name="action_confirm_reject" type="object" string="Confirm" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
