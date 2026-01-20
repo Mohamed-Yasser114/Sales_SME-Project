@@ -1,0 +1,44 @@
+<odoo>
+    <record id="view_order_form_inherit" model="ir.ui.view">
+        <field name="name">view order form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="flag"/>
+            </xpath>
+                <xpath expr="//header" position="inside">
+                <button name="action_open_reject_wizard" type="object" string="Reject" class="btn-secondry" invisible="state=='reject' or not flag" groups="sales_sme.allowed_user_rejection"/>
+            </xpath>
+            <xpath expr="//field[@name='state']" position="attributes">
+                <attribute name="widget">statusbar</attribute>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Rejection Info" invisible="state!='reject' or not flag">
+                    <group>
+                        <field name="rejection_by"/>
+                        <field name="rejection_reason"/>
+                        <field name="rejection_date"/>
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="contact_ids" invisible="not flag">
+                    <list>
+                        <field name="name"/>
+                        <field name="email"/>
+                        <field name="phone"/>
+                        <field name="function"/>
+                    </list>
+                </field>
+            </xpath>
+        </field>
+    </record>
+    <record id="action_sale_order_rejected" model="ir.actions.act_window">
+        <field name="name">Rejected Orders</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('state','=','reject')]</field>
+    </record>
+    <menuitem id="sale_order_rejected_menu" name="Rejected Orders" parent="sale.sale_order_menu" action="action_sale_order_rejected"/>
+</odoo>
