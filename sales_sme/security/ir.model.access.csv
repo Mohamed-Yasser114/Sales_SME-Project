@@ -1,6 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_sales_order,access_sales_order,model_sales_order,"",1,1,1,0
-access_sales_order_line,access_sales_order_line,model_sales_order_line,"",1,1,1,1
-access_sales_order,access_sales_order,model_sales_order,"",1,1,1,1
-access_sales_order_line,access_sales_order_line,model_sales_order_line,"",1,1,1,1
-access_sale_order_reject,access_sale_order_reject,model_sale_order_reject,,1,1,1,1
